@@ -408,7 +408,9 @@ class _SpineWidgetState extends State<SpineWidget> {
     _drawable = drawable;
     _computedBounds = widget._boundsProvider.computeBounds(drawable);
     widget._controller._initialize(drawable);
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   void loadFromAsset(AssetBundle? bundle, String atlasFile, String skeletonFile, _AssetType assetType) async {
